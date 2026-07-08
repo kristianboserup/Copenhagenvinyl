@@ -1,1 +1,48 @@
 
+name: Fetch images
+on:
+  push:
+    paths: ['.github/workflows/fetch-images.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download images
+        run: |
+          mkdir -p img/artists
+          fetch() { curl -sSf -o "$1" "$2" && echo "ok  $1" || echo "FEJL $1"; }
+          fetch "img/hero.jpg" "https://pikaso.cdnpk.net/private/production/4823317379/render.jpg?token=exp=1783814400~hmac=9286a73491979121087a1fd265f3732b840cfc386296d15e59c4cf811ba7cb2a"
+          fetch "img/vinyl.jpg" "https://pikaso.cdnpk.net/private/production/4823318437/render.jpg?token=exp=1783814400~hmac=0ca701ec242187a2cea1afec5b97e2c582538c174be164233dfbb6002b4de3dc"
+          fetch "img/bicycles.jpg" "https://pikaso.cdnpk.net/private/production/4823319966/render.jpg?token=exp=1783814400~hmac=efdba032a993d216dc5b37379cbc40fc8c80a3e4a04c80d9b86fbacd5001248e"
+          fetch "img/clothing.jpg" "https://pikaso.cdnpk.net/private/production/4823322464/render.jpg?token=exp=1783814400~hmac=2b85a226226820779af101464628c5e402d9ef4d748737d23914da58d8e9a472"
+          fetch "img/furniture.jpg" "https://pikaso.cdnpk.net/private/production/4823320687/render.jpg?token=exp=1783814400~hmac=3df51091b07dfc7c8d21d0b573e28bee7a12e3a02069f03de458216d9c87e0e9"
+          fetch "img/logo.jpg" "https://pikaso.cdnpk.net/private/production/4823321627/render.jpg?token=exp=1783814400~hmac=3378c0612905113d6bfe3eba22671c1eaedb3aa309c441213eb64470b2b239a0"
+          fetch "img/artists/rock-1.jpg" "https://pikaso.cdnpk.net/private/production/4823669245/render.jpg?token=exp=1783814400~hmac=4537d135238488adca4c830cc53af9581348c164abc2c3693381d466219ff8d6"
+          fetch "img/artists/rock-2.jpg" "https://pikaso.cdnpk.net/private/production/4823669534/render.jpg?token=exp=1783814400~hmac=fa9196d2222e73d3e5c6819ab915dfeb9ada56f22ea70470d687a9d72c5b16b5"
+          fetch "img/artists/electronic-1.jpg" "https://pikaso.cdnpk.net/private/production/4823670462/render.jpg?token=exp=1783814400~hmac=f1f73f9f6a8aed54b6b25c0f95ea1e5fcf4bc2e3ab48397f9fe9b50dd9a46446"
+          fetch "img/artists/electronic-2.jpg" "https://pikaso.cdnpk.net/private/production/4823670640/render.jpg?token=exp=1783814400~hmac=8742a7e873907bbb688796297de1a042f972bb95d568bfe4a2776ec2b09d6e11"
+          fetch "img/artists/pop-1.jpg" "https://pikaso.cdnpk.net/private/production/4823674220/render.jpg?token=exp=1783814400~hmac=e386e28b927f1f32158a81707dd4cdfdbef24c464d2050a1b79699fc6d2831dd"
+          fetch "img/artists/pop-2.jpg" "https://pikaso.cdnpk.net/private/production/4823674782/render.jpg?token=exp=1783814400~hmac=2081e57a5fbfce1871693220b6d7bc55143401d05daf5eb88f85ea617a6cf1dc"
+          fetch "img/artists/folk-world-country-1.jpg" "https://pikaso.cdnpk.net/private/production/4823674846/render.jpg?token=exp=1783814400~hmac=8b4854def5167676f19111f2bef3eb1f6e05d2770de2c7d7dca4da87b79e1f37"
+          fetch "img/artists/folk-world-country-2.jpg" "https://pikaso.cdnpk.net/private/production/4823672792/render.jpg?token=exp=1783814400~hmac=166a2f92656d5bba77347329a7ee16d7373e9ea17a4716ba72bcd4fcd30357d4"
+          fetch "img/artists/jazz-1.jpg" "https://pikaso.cdnpk.net/private/production/4823674860/render.jpg?token=exp=1783814400~hmac=239d326bd5a6cde5af0bc3e598e38397849eedf43cb881b284970d41edd1cb1e"
+          fetch "img/artists/jazz-2.jpg" "https://pikaso.cdnpk.net/private/production/4823674172/render.jpg?token=exp=1783814400~hmac=a10b8082010451d09369633222fb0cbd54f3e3006947876ebac50f9acaeb6f61"
+          fetch "img/artists/funk-soul-1.jpg" "https://pikaso.cdnpk.net/private/production/4823674546/render.jpg?token=exp=1783814400~hmac=bcac22842cb4274415d9e1d30713627150db2d1d824e8f1a392acccf879142b5"
+          fetch "img/artists/funk-soul-2.jpg" "https://pikaso.cdnpk.net/private/production/4823674760/render.jpg?token=exp=1783814400~hmac=18f3de1f1eb779d8d7854fcb63cf36d231c87ed1d7bc4d0423e6148faed5e0a3"
+          fetch "img/artists/classical-1.jpg" "https://pikaso.cdnpk.net/private/production/4823676668/render.jpg?token=exp=1783814400~hmac=7bf1cee574811e6a66b5819e97d2e42801bada90cdfba83f0e7566b8f8eb5c04"
+          fetch "img/artists/classical-2.jpg" "https://pikaso.cdnpk.net/private/production/4823676309/render.jpg?token=exp=1783814400~hmac=336b422088248938843921d9e9299ff7236cfd275ac941e33f3e92a368cb8e83"
+          fetch "img/artists/hip-hop-1.jpg" "https://pikaso.cdnpk.net/private/production/4823677181/render.jpg?token=exp=1783814400~hmac=b1c702ee0687ec9a2c07e30f0d062d08aba479f969273fbeb7d6e0621bcaa3ba"
+          fetch "img/artists/hip-hop-2.jpg" "https://pikaso.cdnpk.net/private/production/4823676885/render.jpg?token=exp=1783814400~hmac=35097c217073ab408dced8e30e8404fa17709d8aa1573513a537e3d6f708e60e"
+          fetch "img/artists/latin-1.jpg" "https://pikaso.cdnpk.net/private/production/4823680003/render.jpg?token=exp=1783814400~hmac=d5a927448609b54f7f6b74dd92ea65aa026163ce7050fdb146a9ba20c7c66112"
+          fetch "img/artists/latin-2.jpg" "https://pikaso.cdnpk.net/private/production/4823678565/render.jpg?token=exp=1783814400~hmac=e5a8b0b35b8f6b780e47212e68287f2f8f07db1ec9761e20b7a4f91974ed585e"
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add img
+          git commit -m "Add generated images (permanent copies)" || echo "nothing to commit"
+          git push
